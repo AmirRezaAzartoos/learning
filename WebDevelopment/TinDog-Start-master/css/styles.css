@@ -135,6 +135,21 @@ p {
   text-align: center;
 }
 
+/* Call to Action Section */
+
+#cta {
+  background-color: #ff4c68;
+  padding: 7% 15%;
+  text-align: center;
+}
+
+#cta-title {
+  color: white;
+  font-weight: 700;
+  font-size: 3.5rem;
+  line-height: 1.5;
+}
+
 @media (max-width: 990px) {
   .title-image {
     position: static;
@@ -144,4 +159,20 @@ p {
   #title {
     text-align: center;
   }
+}
+
+
+/* Footer Section */
+
+#footer {
+  padding: 7% 15%;
+  text-align: center;
+}
+
+#social-icon-div {
+  margin: 20px 0px;
+}
+
+.social-icon {
+  margin: 0px 10px;
 }
