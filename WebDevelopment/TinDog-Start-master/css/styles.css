@@ -1,28 +1,51 @@
 body {
   font-family: Montserrat, sans-serif;
+  text-align: center;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
+  font-family: Montserrat, sans-serif;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+p {
+  color: #8f8f8f;
+}
+
+/* Headings */
+
+.big-heading {
   font-family: Montserrat, sans-serif;
   font-weight: 900;
   font-size: 3.5rem;
   line-height: 1.5;
 }
 
-h2 {
-  font-family: Montserrat;
+.section-heading {
   font-weight: 700;
   font-size: 3rem;
   line-height: 1.5;
 }
 
-h3 {
-  font-family: Montserrat;
-  font-weight: 700;
+/* Containers */
+
+.container-fluid {
+  padding: 7% 15%;
 }
 
-p {
-  color: #8f8f8f;
+/* Sections */
+
+.colored-section {
+  background-color: #ff4c68;
+  color: white;
+}
+
+.white-section {
+  background-color: white;
 }
 
 /* Navigation Bar */
@@ -47,25 +70,16 @@ p {
 
 /* Title */
 
-.container-fluid {
-  padding: 3% 18% 7%;
-}
-
-#title {
-  background-color: #ff4c68;
-  color: white;
+#title .container-fluid {
+  padding: 3% 15% 7%;
+  text-align: left;
 }
 
 .title-image {
   height: 44rem;
-  margin: auto;
+  right: 25%;
   transform: rotate(25deg);
   position: absolute;
-  left: 60%;
-}
-
-.img-container {
-  text-align: center;
 }
 
 /* Download buttons */
@@ -79,13 +93,10 @@ p {
 /* Features */
 
 #features {
-  background-color: white;
-  padding: 7% 15%;
   position: relative;
 }
 
 .feature-box {
-  text-align: center;
   padding: 5%;
 }
 
@@ -99,12 +110,15 @@ p {
   color: #ff4c68;
 }
 
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 /* Testimonial Section */
 
 #testimonials {
-  text-align: center;
   background-color: #ef8172;
-  color: white;
 }
 
 .testimonial-image {
@@ -115,7 +129,6 @@ p {
 
 #press {
   background-color: #ef8172;
-  text-align: center;
   padding-bottom: 3%;
 }
 
@@ -124,31 +137,25 @@ p {
   margin: 20px 20px 50px;
 }
 
-.carousel-item {
-  padding: 7% 15%;
+.testimonial-text {
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1.5;
 }
 
 /* Pricing Section */
 
 #pricing {
   padding: 100px;
-  text-align: center;
+}
+
+.price-text {
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1.5;
 }
 
 /* Call to Action Section */
-
-#cta {
-  background-color: #ff4c68;
-  padding: 7% 15%;
-  text-align: center;
-}
-
-#cta-title {
-  color: white;
-  font-weight: 700;
-  font-size: 3.5rem;
-  line-height: 1.5;
-}
 
 @media (max-width: 990px) {
   .title-image {
@@ -163,11 +170,6 @@ p {
 
 
 /* Footer Section */
-
-#footer {
-  padding: 7% 15%;
-  text-align: center;
-}
 
 #social-icon-div {
   margin: 20px 0px;
