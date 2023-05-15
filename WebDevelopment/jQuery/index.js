@@ -21,7 +21,7 @@ $("h1").prepend("<button>prepend</button>")
 $("h1").append("<button>append</button>")
 // $("h1").remove();
 $("button").on("click", function(){
-    $("h1").hide()
+    // $("h1").hide()
     // $("h1").show()
     // $("h1").toggle()
     // $("h1").fadeout()
@@ -31,7 +31,7 @@ $("button").on("click", function(){
     // $("h1").slidedown()
     // $("h1").slidetoggle()
     // $("h1").animate({opacity: 0.5})
-    // $("h1").animate({margin/*must be numeric */: 10})
+    $("h1").animate({margin/*must be numeric */: 10})
     // $("h1").slideup().slidedown().animate({opacity: 0.5})
     // https://api.jquery.com/category/effects/
 })
