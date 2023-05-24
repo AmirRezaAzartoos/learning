@@ -10,7 +10,7 @@ Create a new file named Dockerfile in the app directory using a text editor of y
 Open the Dockerfile and add the following code:
 
 # Use an official Node.js runtime as a parent image
-FROM node:10
+FROM node:14
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -23,7 +23,7 @@ RUN docker stop newsletter-signup-container || true \
 RUN docker rmi $(docker images -q newsletter-signup) || true
 
 # Clone latest code from the Git repository
-RUN git pull
+# RUN git pull
 
 # Install app dependencies
 COPY package*.json ./
