@@ -1,0 +1,56 @@
+<!-- docker file -->
+Sure, I’d be happy to explain the detailed steps you can follow to deploy a Node.js app in Ubuntu server using Docker.
+
+First, you need to make sure that you have installed Docker and Node.js in your Ubuntu server.
+
+Create a new directory for your Node.js app and navigate to it using the command line.
+
+Create a new file named Dockerfile in the app directory using a text editor of your choice (nano, vim, etc).
+
+Open the Dockerfile and add the following code:
+
+# Use an official Node.js runtime as a parent image
+FROM node:10
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package*.json ./
+RUN npm install
+
+# Bundle app source
+COPY . .
+
+# Expose port 3000
+EXPOSE 3000
+
+# Run the app
+CMD ["npm", "start"]
+Let’s break down the code:
+
+FROM node:10: specifies a base image for the app using Node.js version 10.
+WORKDIR /usr/src/app: sets the working directory inside the Docker container where the app will be mounted
+COPY package*.json ./ copies the package.json and package-lock.json files to the /usr/src/app/ directory and installs the packages.
+COPY . . is used to copy all the other files and directories from the current working directory on your machine to the working directory in the Docker image (remember this is before you mapped a volume from your host machine to mount it in the container).
+EXPOSE 3000 tells Docker to open up the container’s port 3000. Note that this doesn’t necessarily map to the same port of your host machine.
+CMD ["npm", "start"] is the default command that will be executed when the container starts running.
+Save the Dockerfile and build a Docker image using the following command in the app directory:
+docker build -t <your-image-name> .
+Note: replace <your-image-name> with a name of your choice for the Docker image.
+
+After the Docker image is built successfully, check to see if it was created:
+docker images
+You should see the Docker image that you just built listed among your images.
+
+Run the image in a container using the following command in the app directory:
+docker run -p 3000:3000 -d --name <your-container-name> <your-image-name>
+Note: replace <your-container-name> with a name of your choice for the Docker container, and <your-image-name> with the name you gave your Docker image in Step 5.
+
+Verify that the container is running using the following command:
+docker ps
+You should see a list of all the running containers, including the one you just started.
+
+Test your Node.js app by opening a web browser and accessing the URL http://<your-server-ip>:3000, where <your-server-ip> is the IP address of your Ubuntu server.
+That’s it! You have now successfully deployed a Node.js app in an Ubuntu server using Docker. Just remember to customize the steps according to your specific app’s requirements.
+<!--  -->
