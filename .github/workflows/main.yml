@@ -25,7 +25,11 @@ jobs:
       with:
         context: .
         push: true
-        tags: https://freedom.dementor.info:8080/${{ github.repository }}:${{ github.sha }}
+        tags: freedom.dementor.info:8080/myimage:${{ github.sha }}
+      env:
+        DOCKER_USERNAME: worker
+        DOCKER_PASSWORD: ${{ secrets.WORKER_SECRET }}
+        DOCKER_REGISTRY: freedom.dementor.info:8080
 
     - name: SSH into the server and redeploy the container
       uses: appleboy/ssh-action@master
