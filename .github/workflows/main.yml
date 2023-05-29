@@ -15,7 +15,7 @@ jobs:
     - name: Docker Login
       uses: docker/login-action@v1
       with:
-        registry: freedom.dementor.info:3001
+        registry: freedom.dementor.info:8080
         username: worker
         password: ${{ secrets.WORKER_SECRET }}
 
@@ -35,9 +35,9 @@ jobs:
         script: |
           docker stop ${DOCKER_CONTAINER_NAME} || true
           docker rm ${DOCKER_CONTAINER_NAME} || true
-          docker pull freedom.dementor.info:3001/${{ github.repository }}:latest
-          docker run -d -p ${DOCKER_PORT}:3001 --name ${DOCKER_CONTAINER_NAME} freedom.dementor.info:3001/${{ github.repository }}:latest
+          docker pull freedom.dementor.info:8080/${{ github.repository }}:latest
+          docker run -d -p ${DOCKER_PORT}:3001 --name ${DOCKER_CONTAINER_NAME} freedom.dementor.info:8080/${{ github.repository }}:latest
 
     env:
       DOCKER_CONTAINER_NAME: "my-node-app"
-      DOCKER_PORT: "3001"
+      DOCKER_PORT: "8081"
