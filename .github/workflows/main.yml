@@ -18,13 +18,14 @@ jobs:
         registry: freedom.dementor.info:8080
         username: worker
         password: ${{ secrets.WORKER_SECRET }}
+        insecure: true
 
     - name: Build the Docker image
       uses: docker/build-push-action@v2
       with:
         context: .
         push: true
-        tags: freedom.dementor.info:3001/${{ github.repository }}:latest
+        tags: freedom.dementor.info:8080/${{ github.repository }}:latest
 
     - name: SSH into the server and redeploy the container
       uses: appleboy/ssh-action@master
