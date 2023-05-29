@@ -13,10 +13,10 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Setup SSH keys
+      uses: webfactory/ssh-agent@v0.4.0
+      with:
+        ssh-private-key: ${{ secrets.WORKER_SECRET }}
       run: |
-        mkdir -p ~/.ssh/
-        echo "${{ secrets.WORKER_SECRET }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
         ssh-keyscan freedom.dementor.info >> ~/.ssh/known_hosts
 
     - name: Build Docker image
@@ -37,11 +37,13 @@ jobs:
 
     - name: Deploy to server
       env:
-        WORKER_SECRET: ${{ secrets.WORKER_SECRET }}
+        SSH_AUTH_SOCK: /tmp/ssh-socket
       run: |
-        ssh worker@freedom.dementor.info \
+        ssh-add -D # Removes all keys so we only use the newly added one
+        ssh-add <(echo "$WORKER_SECRET")
+        ssh -o StrictHostKeyChecking=no -A worker@freedom.dementor.info \
         "docker login -u ${DOCKER_HUB_USERNAME} -p ${DOCKER_HUB_PASSWORD} && \
         docker stop my-container || true && \
         docker rm my-container || true && \
         docker pull username/my-image:latest && \
-        docker run -d -p 80:80 --name my-container username/my-image:latest"
+        docker run -d -p 8080:8080 --name my-container username/my-image:latest"
