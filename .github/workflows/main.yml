@@ -17,7 +17,7 @@ jobs:
         mkdir -p ~/.ssh/
         echo "${{ secrets.WORKER_SECRET }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan <server-ip-address> >> ~/.ssh/known_hosts
+        ssh-keyscan freedom.dementor.info >> ~/.ssh/known_hosts
 
     - name: Build Docker image
       run: |
@@ -39,7 +39,7 @@ jobs:
       env:
         WORKER_SECRET: ${{ secrets.WORKER_SECRET }}
       run: |
-        ssh <server-username>@<server-ip-address> \
+        ssh worker@freedom.dementor.info \
         "docker login -u ${DOCKER_HUB_USERNAME} -p ${DOCKER_HUB_PASSWORD} && \
         docker stop my-container || true && \
         docker rm my-container || true && \
