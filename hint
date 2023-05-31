@@ -68,5 +68,5 @@ You should see a list of all the running containers, including the one you just 
 Test your Node.js app by opening a web browser and accessing the URL http://<your-server-ip>:3000, where <your-server-ip> is the IP address of your Ubuntu server.
 That’s it! You have now successfully deployed a Node.js app in an Ubuntu server using Docker. Just remember to customize the steps according to your specific app’s requirements.
 <!--  -->
-docker build -t newsletter-signup .
-docker run -p 3000:3000 -d --name newsletter-signup-container newsletter-signup
+docker build -t project Exersise\WebDevelopment\project
+docker run -p 3000:3000 -d --name project-container project
