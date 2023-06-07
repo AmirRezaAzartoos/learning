@@ -11,7 +11,7 @@ app.set("view engine", "ejs")
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static("public"))
 
-app.listen(3001, () => console.log("Server is running on port 3001."))
+app.listen(3002, () => console.log("Server is running on port 3001."))
 
 const items = ["Buy food", "Cook food", "Eat food"]
 const workItems = []
