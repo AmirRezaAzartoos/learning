@@ -5,13 +5,14 @@ const bodyParser = require("body-parser")
 const date = require(__dirname + "/date.js")
 
 const app = express()
+const PORT = process.env.PORT || 3000
 
 app.set("view engine", "ejs")
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static("public"))
 
-app.listen(3002, () => console.log("Server is running on port 3001."))
+app.listen(PORT, () => console.log("Server is running on port 3001."))
 
 const items = ["Buy food", "Cook food", "Eat food"]
 const workItems = []
