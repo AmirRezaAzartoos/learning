@@ -1,54 +1,80 @@
-const { MongoClient } = require("mongodb");
+const mongoose = require("mongoose")
 
-// Replace the uri string with your connection string.
-const uri = "mongodb://freedom.dementor.info:27017";
+mongoose.connect("mongodb://freedom.dementor.info:27017/fruitDB")
 
-const client = new MongoClient(uri);
+const fruitSchema = new mongoose.Schema({
+    id: Number,
+    name: String,
+    rating: Number,
+    review: String
+})
 
-async function run() {
-    try {
-        const database = client.db('fruitsDB');
-        const fruits = database.collection('fruits');
+const Fruit = mongoose.model("Fruit", fruitSchema)
 
-        const docs = [
-            {
-                name: "Apple",
-                score: 5,
-                review: "Acceptable",
-            },
-            {
-                name: "Coconut",
-                score: 8,
-                review: "Love it !",
-            },
-            {
-                name: "Mango",
-                score: 10,
-                review: "Best one.",
-            }
-        ]
-        //const result = await fruits.insertMany(docs);
+// const apple = new Fruit(
+//     {
+//         id: 1,
+//         name: "Apple",
+//         score: 5,
+//         review: "Acceptable"
+//     })
 
-        // Query for a fruit that has the title 'The Room'
-        const query = { name: "Apple" };
-        const options = {
-            // sort matched documents in descending order by rating
-            sort: { "score": 1 },
-            // Include only the `title` and `imdb` fields in the returned document
-            projection: { _id: 1, name: 1, score: 1 },
-        };
-        const cursor = await fruits.find(query, options);
-        
-        for await (const doc of cursor) {
-            console.dir(doc);
-          }
+// const coconut = new Fruit(
+//     {
+//         id: 1,
+//         name: "Coconut",
+//         score: 8,
+//         review: "Love it !"
+//     })
 
-        //const result = await fruits.deleteOne({ _id: ObjectId("648084ff99a4bdc3796890d8") })
+// const mango = new Fruit(
+//     {
+//         id: 1,
+//         name: "Mango",
+//         score: 10,
+//         review: "Best one."
+//     })
 
-        //console.log(result);
-    } finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
+const arr = [
+    {
+        id: 1,
+        name: "Apple",
+        score: 5,
+        review: "Acceptable",
+    },
+    {
+        id: 2,
+        name: "Coconut",
+        score: 8,
+        review: "Love it !",
+    },
+    {
+        id: 3,
+        name: "Mango",
+        score: 10,
+        review: "Best one.",
     }
-}
-run().catch(console.dir);
+]
+
+Fruit.insertMany(arr).then(function () {
+    console.log("Success !")
+}).catch(function (err) {
+    console.log(err)
+})
+
+const PersonSchema = new mongoose.Schema({
+    id: Number,
+    name: String,
+    age: Number
+})
+
+const Person = mongoose.model("Person", PersonSchema)
+
+const person = new Person(
+    {
+        id: 1,
+        name: "John",
+        age: 26
+    })
+
+// person.save()
