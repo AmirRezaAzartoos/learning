@@ -148,8 +148,8 @@ app.get("/posts/:postName", function (req, res) {
 		});
 });
 
-const PORT = process.env.PORT || 3009;
+const PORT = process.env.PORT || 3010;
 
 app.listen(PORT, function () {
-	console.log("Server started on port 3009");
+	console.log("Server started on port 3010");
 });

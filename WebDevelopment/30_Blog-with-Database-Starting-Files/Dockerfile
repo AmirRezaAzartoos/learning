@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y nano && rm -rf /var/lib/apt/lists/*
 COPY . .
 
 # Expose port 3000
-EXPOSE 3009
+EXPOSE 3010
 
 # Run the app
 CMD ["npm", "start"]
