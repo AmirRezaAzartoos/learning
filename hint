@@ -10,7 +10,7 @@ Create a new file named Dockerfile in the app directory using a text editor of y
 Open the Dockerfile and add the following code:
 
 # Use an official Node.js runtime as a parent image
-FROM node:14
+FROM node:16
 
 # Set the working directory
 WORKDIR /usr/src/app

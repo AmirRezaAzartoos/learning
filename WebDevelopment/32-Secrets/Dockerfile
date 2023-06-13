@@ -5,11 +5,11 @@ FROM node:16
 WORKDIR /usr/src/app
 
 # Stop and remove any running containers with the same name
-RUN docker stop todolist-v2-starting-files-container || true \
-    && docker rm todolist-v2-starting-files-container || true
+RUN docker stop Secrets-container || true \
+    && docker rm Secrets-container || true
 
 # Remove the last image with the same name
-RUN docker rmi $(docker images -q todolist-v2-starting-files) || true
+RUN docker rmi $(docker images -q Secrets) || true
 
 # Clone latest code from the Git repository
 # RUN git pull
@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y nano && rm -rf /var/lib/apt/lists/*
 COPY . .
 
 # Expose port 3000
-EXPOSE 3008
+EXPOSE 3012
 
 # Run the app
 CMD ["npm", "start"]
